@@ -166,7 +166,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Текущий тонометр:"
+        tools:text="Текущий тонометр:"
         android:textColor="@color/black"
         android:textSize="32sp"
         android:textStyle="bold"
@@ -178,7 +178,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="TESTNAME Testmodel 999"
+        tools:text="TESTNAME Testmodel 999"
         android:textSize="28sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/current_device_header" />
@@ -188,7 +188,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="111-333-444-222"
+        tools:text="111-333-444-222"
         android:textSize="28sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/current_manufacturer_model" />

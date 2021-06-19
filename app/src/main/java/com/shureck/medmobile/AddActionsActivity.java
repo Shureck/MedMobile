@@ -25,15 +25,29 @@ public class AddActionsActivity extends AppCompatActivity {
 
     LinearLayout actionsContainer;
 
+    CardView addAction;
+    CardView removeAction;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_actions);
 
         actionsContainer = findViewById(R.id.actions_container);
+        addAction = findViewById(R.id.add_action_card);
+        removeAction = findViewById(R.id.remove_action_card);
 
         setActionsInfo();
         setActionsListContent();
+
+        addAction.setOnClickListener(v -> {
+            Intent intent = new Intent(AddActionsActivity.this, SelectNewActionTypeActivity.class);
+            startActivity(intent);
+        });
+
+        removeAction.setOnClickListener(v -> {
+            // TODO: add action removing
+        });
     }
 
     private void setActionsInfo() {

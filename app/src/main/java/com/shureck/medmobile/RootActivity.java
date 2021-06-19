@@ -19,7 +19,7 @@ public class RootActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_root);
-        startService(new Intent(this, SocketService.class));
+        // startService(new Intent(this, SocketService.class));
 
         CardView photoCard = findViewById(R.id.photo_card);
         photoCard.setOnClickListener(new View.OnClickListener() {

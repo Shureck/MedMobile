@@ -14,7 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MedMobile.NoActionBar">
-        <activity android:name=".AddActionsActivity"></activity>
+        <activity android:name=".SetParametersForActionActivity"></activity>
+        <activity android:name=".MakeNewActionActivity" />
+        <activity android:name=".SelectNewActionTypeActivity" />
+        <activity android:name=".AddActionsActivity" />
         <activity android:name=".CheckInputActivity" />
         <activity android:name=".RootActivity">
             <intent-filter>
