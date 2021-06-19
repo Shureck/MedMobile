@@ -141,6 +141,7 @@
         android:text="Отправить"
         android:textAllCaps="false"
         android:textSize="36sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/button_back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -158,6 +159,7 @@
         android:text="Назад"
         android:textAllCaps="false"
         android:textSize="36sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

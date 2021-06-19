@@ -21,7 +21,8 @@ public class CheckInputActivity extends AppCompatActivity {
         backButton = findViewById(R.id.button_back);
 
         sendButton.setOnClickListener(v -> {
-
+            Intent intent = new Intent(CheckInputActivity.this, AddActionsActivity.class);
+            startActivity(intent);
         });
 
         backButton.setOnClickListener(v -> {
