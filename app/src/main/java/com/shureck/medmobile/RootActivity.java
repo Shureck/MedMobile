@@ -21,20 +21,30 @@ public class RootActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_root);
         startService(new Intent(this, SocketService.class));
 
-        CardView photo_card = findViewById(R.id.photo_card);
-        photo_card.setOnClickListener(new View.OnClickListener() {
+        CardView photoCard = findViewById(R.id.photo_card);
+        photoCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentTest = new Intent(RootActivity.this, MainActivity.class);
                 startActivity(intentTest);
             }
         });
-        CardView register_device_card = findViewById(R.id.register_device_card);
+        CardView registerDeviceCard = findViewById(R.id.register_device_card);
 
-        register_device_card.setOnClickListener(new View.OnClickListener() {
+        registerDeviceCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentTest = new Intent(RootActivity.this, RegisterDeviceActivity.class);
+                startActivity(intentTest);
+            }
+        });
+
+        CardView manuallyCard = findViewById(R.id.manually_card);
+
+        manuallyCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentTest = new Intent(RootActivity.this, CheckInputActivity.class);
                 startActivity(intentTest);
             }
         });
@@ -44,8 +54,7 @@ public class RootActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId())
-        {
+        switch (v.getId()) {
             case R.id.photo_card:
                 Context context = getApplicationContext();
                 CharSequence text = "Hello toast!";

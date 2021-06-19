@@ -4,56 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RootActivity"
-    android:orientation="vertical">
-    
-    
+    android:orientation="vertical"
+    tools:context=".RootActivity">
+
+
     <TextView
         android:id="@+id/name_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/name_text_view"
-        android:text="Петров Андрей Иванович"
-        android:textSize="32sp"
-        android:textColor="@color/black"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
+        android:text="Петров Андрей Иванович"
+        android:textColor="@color/black"
+        android:textSize="32sp"
         android:textStyle="bold"
-        />
+        app:layout_constraintBottom_toTopOf="@id/name_text_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/years_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/name_text_view"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/photo_card"
-        android:text="61 год"
-        android:textSize="32sp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:textColor="@color/black"/>
+        android:text="61 год"
+        android:textColor="@color/black"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@id/photo_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name_text_view" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/photo_card"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/years_text_view"
-        app:layout_constraintBottom_toTopOf="@id/manually_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        app:cardCornerRadius="16dp"
         android:backgroundTint="@color/red_main"
-        android:onClick="onClick">
+        android:onClick="onClick"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@id/manually_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/years_text_view">
 
         <LinearLayout
             android:id="@+id/button_photo"
@@ -62,10 +61,10 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:src="@drawable/ic_baseline_photo_camera_24"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="16dp"/>
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/ic_baseline_photo_camera_24" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -83,17 +82,17 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/manually_card"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/photo_card"
-        app:layout_constraintBottom_toTopOf="@id/notify_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/green_main"
         app:cardCornerRadius="16dp"
-        android:backgroundTint="@color/green_main">
+        app:layout_constraintBottom_toTopOf="@id/notify_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/photo_card">
 
         <LinearLayout
             android:id="@+id/button_manually"
@@ -102,20 +101,20 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:src="@drawable/ic_baseline_edit_24"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="16dp"/>
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/ic_baseline_edit_24" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="16dp"
                 android:text="Отправить вручную"
                 android:textColor="@color/white"
-                android:textStyle="bold"
                 android:textSize="32sp"
-                android:layout_gravity="center"
-                android:layout_marginEnd="16dp"/>
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -123,17 +122,17 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/notify_card"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/manually_card"
-        app:layout_constraintBottom_toTopOf="@id/diary_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/violet_main"
         app:cardCornerRadius="16dp"
-        android:backgroundTint="@color/violet_main">
+        app:layout_constraintBottom_toTopOf="@id/diary_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/manually_card">
 
         <LinearLayout
             android:id="@+id/button_notifs"
@@ -142,20 +141,20 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:src="@drawable/ic_baseline_report_24"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="16dp"/>
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/ic_baseline_report_24" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="16dp"
                 android:text="Сообщения врача"
                 android:textColor="@color/white"
-                android:textStyle="bold"
                 android:textSize="32sp"
-                android:layout_gravity="center"
-                android:layout_marginEnd="16dp"/>
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -164,17 +163,17 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/diary_card"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/notify_card"
-        app:layout_constraintBottom_toTopOf="@id/register_device_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/yellow_main"
         app:cardCornerRadius="16dp"
-        android:backgroundTint="@color/yellow_main">
+        app:layout_constraintBottom_toTopOf="@id/register_device_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/notify_card">
 
         <LinearLayout
             android:id="@+id/button_register_device"
@@ -183,20 +182,20 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:src="@drawable/ic_baseline_sticky_note_2_24"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="16dp"/>
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/ic_baseline_sticky_note_2_24" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="16dp"
                 android:text="Дневник показаний"
                 android:textColor="@color/white"
-                android:textStyle="bold"
                 android:textSize="32sp"
-                android:layout_gravity="center"
-                android:layout_marginEnd="16dp"/>
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -204,17 +203,17 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/register_device_card"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/diary_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/blue_main"
         app:cardCornerRadius="16dp"
-        android:backgroundTint="@color/blue_main">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/diary_card">
 
         <LinearLayout
             android:id="@+id/button_photo_2"
@@ -223,25 +222,24 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:src="@drawable/ic_baseline_published_with_changes_24"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="16dp"/>
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                android:layout_margin="16dp"
+                android:src="@drawable/ic_baseline_published_with_changes_24" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="16dp"
                 android:text="Регистрация тонометра"
                 android:textColor="@color/white"
-                android:textStyle="bold"
                 android:textSize="32sp"
-                android:layout_gravity="center"
-                android:layout_marginEnd="16dp"/>
+                android:textStyle="bold" />
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

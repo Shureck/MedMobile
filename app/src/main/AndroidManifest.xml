@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MedMobile.NoActionBar">
-        <activity android:name=".CheckInputActivity"></activity>
+        <activity android:name=".AddActionsActivity"></activity>
+        <activity android:name=".CheckInputActivity" />
         <activity android:name=".RootActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,7 +43,7 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity" />
     </application>
 
