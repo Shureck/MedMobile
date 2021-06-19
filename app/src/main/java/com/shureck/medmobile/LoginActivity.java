@@ -44,22 +44,13 @@ public class LoginActivity extends AppCompatActivity {
         reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new IOAsyncTask().execute(new String[]{"http://45.157.140.16:23200/register", login.getText().toString(), pass.getText().toString()});
+                new IOAsyncTask().execute(new String[]{"http://localhost/register/patient", login.getText().toString(), pass.getText().toString()});
             }
         });
         log.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new IOAsyncTask().execute(new String[]{"http://45.157.140.16:23200/auth", login.getText().toString(), pass.getText().toString()});
-            }
-        });
-        TextView textView = findViewById(R.id.textView);
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                workWithToken.saveToken("Free");
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
+                new IOAsyncTask().execute(new String[]{"http://localhost/auth/patient", login.getText().toString(), pass.getText().toString()});
             }
         });
 

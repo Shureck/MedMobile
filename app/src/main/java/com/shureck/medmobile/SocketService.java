@@ -74,7 +74,7 @@ public class SocketService extends Service {
 
                         notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), RootActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
@@ -84,8 +84,8 @@ public class SocketService extends Service {
                                         .setSmallIcon(R.drawable.ic_launcher_background)
                                         .setWhen(System.currentTimeMillis())
                                         .setContentIntent(pendingIntent)
-                                        .setContentTitle("Title")
-                                        .setContentText("text")
+                                        .setContentTitle("Напоминание")
+                                        .setContentText("Измерить давление")
                                         .setPriority(NotificationCompat.PRIORITY_HIGH);
 
                         createChannelIfNeeded(notificationManager);
@@ -94,7 +94,7 @@ public class SocketService extends Service {
                     }
                 });
             }
-        }, 0L, 1L * 1000);
+        }, 0L, 5L * 1000);
 
     }
 
