@@ -22,31 +22,35 @@ public class RootActivity extends AppCompatActivity implements View.OnClickListe
         // startService(new Intent(this, SocketService.class));
 
         CardView photoCard = findViewById(R.id.photo_card);
-        photoCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentTest = new Intent(RootActivity.this, MainActivity.class);
-                startActivity(intentTest);
-            }
+        photoCard.setOnClickListener(v -> {
+            Intent intentTest = new Intent(RootActivity.this, MainActivity.class);
+            startActivity(intentTest);
         });
         CardView registerDeviceCard = findViewById(R.id.register_device_card);
 
-        registerDeviceCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentTest = new Intent(RootActivity.this, RegisterDeviceActivity.class);
-                startActivity(intentTest);
-            }
+        registerDeviceCard.setOnClickListener(v -> {
+            Intent intentTest = new Intent(RootActivity.this, RegisterDeviceActivity.class);
+            startActivity(intentTest);
         });
 
         CardView manuallyCard = findViewById(R.id.manually_card);
 
-        manuallyCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentTest = new Intent(RootActivity.this, CheckInputActivity.class);
-                startActivity(intentTest);
-            }
+        manuallyCard.setOnClickListener(v -> {
+            Intent intentTest = new Intent(RootActivity.this, CheckInputActivity.class);
+            startActivity(intentTest);
+        });
+
+
+        CardView diaryCard = findViewById(R.id.diary_card);
+        diaryCard.setOnClickListener(v -> {
+            Intent intentTest = new Intent(RootActivity.this, DiaryActivity.class);
+            startActivity(intentTest);
+        });
+
+        CardView notifyCard = findViewById(R.id.notify_card);
+        notifyCard.setOnClickListener(v -> {
+            Intent intentTest = new Intent(RootActivity.this, DoctorsNotifyActivity.class);
+            startActivity(intentTest);
         });
 //        Intent intentTest = new Intent(RootActivity.this, RegisterDeviceActivity.class);
 //        startActivity(intentTest);

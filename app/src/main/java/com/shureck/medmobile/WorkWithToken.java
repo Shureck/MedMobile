@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class WorkWithToken extends AppCompatActivity {
 
     public static final String APP_PREFERENCES = "mysettings";
-    public static final String APP_PREFERENCES_TOKEN = "Token"; // возраст кота
+    public static final String APP_PREFERENCES_TOKEN = "Token";
     SharedPreferences mSettings;
     public WorkWithToken(Context context) {
         mSettings = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
