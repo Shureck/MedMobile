@@ -14,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MedMobile.NoActionBar">
-        <activity android:name=".SetParametersForActionActivity"></activity>
+        <activity android:name=".DiaryActivity"></activity>
+        <activity android:name=".DoctorsNotifyActivity"></activity>
+        <activity android:name=".SetParametersForActionActivity" />
         <activity android:name=".ActionsManaging.MakeNewActionActivity" />
         <activity android:name=".SelectNewActionTypeActivity" />
         <activity android:name=".ActionsManaging.AddActionsActivity" />
