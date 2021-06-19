@@ -64,25 +64,34 @@ public class MainActivity extends Activity {
         WorkWithToken workWithToken = new WorkWithToken(MainActivity.this);
         token = workWithToken.readToken();
         System.out.println("Token "+token);
-        if(token == null || token.equals("")) {
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(intent);
-        }
-        else {
+//        if(token == null || token.equals("")) {
+//            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+//            startActivity(intent);
+//        }
+//        else {
+//
+////            Button button = findViewById(R.id.take_image_button);
+////            button.setOnClickListener(this::onClickPhoto);
+//            //startService(new Intent(this, SocketService.class));
+//
+//            ContentValues values = new ContentValues();
+//            values.put(MediaStore.Images.Media.TITLE, "MyPicture");
+//            values.put(MediaStore.Images.Media.DESCRIPTION, "Photo taken on " + System.currentTimeMillis());
+//            imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+//
+//            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//            intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+//            startActivityForResult(intent, REQUEST_CODE_PHOTO);
+//        }
 
-//            Button button = findViewById(R.id.take_image_button);
-//            button.setOnClickListener(this::onClickPhoto);
-            //startService(new Intent(this, SocketService.class));
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.Images.Media.TITLE, "MyPicture");
+        values.put(MediaStore.Images.Media.DESCRIPTION, "Photo taken on " + System.currentTimeMillis());
+        imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
 
-            ContentValues values = new ContentValues();
-            values.put(MediaStore.Images.Media.TITLE, "MyPicture");
-            values.put(MediaStore.Images.Media.DESCRIPTION, "Photo taken on " + System.currentTimeMillis());
-            imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-
-            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-            startActivityForResult(intent, REQUEST_CODE_PHOTO);
-        }
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+        startActivityForResult(intent, REQUEST_CODE_PHOTO);
     }
 
     public void onClickPhoto(View view) {
