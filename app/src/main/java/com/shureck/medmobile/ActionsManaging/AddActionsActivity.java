@@ -1,11 +1,10 @@
-package com.shureck.medmobile;
+package com.shureck.medmobile.ActionsManaging;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +12,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.shureck.medmobile.R;
+import com.shureck.medmobile.SelectNewActionTypeActivity;
+
 import java.util.Arrays;
 import java.util.List;
 

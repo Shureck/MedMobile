@@ -15,10 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MedMobile.NoActionBar">
         <activity android:name=".SetParametersForActionActivity"></activity>
-        <activity android:name=".MakeNewActionActivity" />
+        <activity android:name=".ActionsManaging.MakeNewActionActivity" />
         <activity android:name=".SelectNewActionTypeActivity" />
-        <activity android:name=".AddActionsActivity" />
-        <activity android:name=".CheckInputActivity" />
+        <activity android:name=".ActionsManaging.AddActionsActivity" />
+        <activity android:name=".InputData.CheckInputActivity" />
         <activity android:name=".RootActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

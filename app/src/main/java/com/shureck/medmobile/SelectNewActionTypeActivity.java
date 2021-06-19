@@ -7,9 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.util.Set;
+import com.shureck.medmobile.ActionsManaging.MakeNewActionActivity;
 
 
 public class SelectNewActionTypeActivity extends AppCompatActivity implements View.OnClickListener {

@@ -6,10 +6,10 @@ import androidx.cardview.widget.CardView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.DocumentsContract;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
+
+import com.shureck.medmobile.InputData.CheckInputActivity;
 
 public class RootActivity extends AppCompatActivity implements View.OnClickListener {
 
