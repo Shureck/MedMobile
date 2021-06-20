@@ -99,7 +99,7 @@ public class SocketService extends Service {
 //                        createChannelIfNeeded(notificationManager);
 //                        notificationManager.notify(notificationId, notificationBuilder.build());
 //                        notificationId++;
-                        new IOAsyncTask().execute("http://10.50.3.240:8080/patient/actualDoctorMessage");
+                        new IOAsyncTask().execute("http://10.18.0.3:8080/patient/actualDoctorMessage");
                     }
                 });
             }

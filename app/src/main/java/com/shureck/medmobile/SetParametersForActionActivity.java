@@ -64,9 +64,9 @@ public class SetParametersForActionActivity extends AppCompatActivity {
 
         button_save.setOnClickListener(v -> {
 
-            new IOAsyncTask().execute("http://10.50.3.240:8080/patient/addActivityType?activityType="+headerView.getText()+" "+pulse_val.getText());
+            new IOAsyncTask().execute("http://10.18.0.3:8080/patient/addActivityType?activityType="+headerView.getText()+" "+pulse_val.getText());
 
-            Intent intent = new Intent(SetParametersForActionActivity.this, SelectNewActionTypeActivity.class);
+            Intent intent = new Intent(SetParametersForActionActivity.this, RootActivity.class);
             startActivity(intent);
             finish();
         });

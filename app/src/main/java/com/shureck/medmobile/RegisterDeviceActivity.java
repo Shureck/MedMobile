@@ -45,7 +45,7 @@ public class RegisterDeviceActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new IOAsyncTask().execute("http://10.50.3.240:8080/patient/addTonometer");
+                new IOAsyncTask().execute("http://10.18.0.3:8080/patient/addTonometer");
             }
         });
     }

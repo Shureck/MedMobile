@@ -152,7 +152,7 @@ public class MainActivity extends Activity {
                             e.printStackTrace();
                         }
 
-//                        new IOAsyncTask().execute("http://10.50.3.240:8080/patient/getPhoto");
+//                        new IOAsyncTask().execute("http://10.18.0.3:8080/patient/getPhoto");
 
                         Intent intentTest = new Intent(MainActivity.this, CheckInputActivity.class);
                         intentTest.putExtra("top", 136);

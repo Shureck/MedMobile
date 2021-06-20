@@ -37,7 +37,7 @@ public class DiaryActivity extends AppCompatActivity {
         WorkWithToken workWithToken = new WorkWithToken(DiaryActivity.this);
         token = workWithToken.readToken();
 
-        new IOAsyncTask().execute("http://10.50.3.240:8080/patient/allPressure");
+        new IOAsyncTask().execute("http://10.18.0.3:8080/patient/allPressure");
     }
 
     public void setData(List<DiaryModel> previews){
