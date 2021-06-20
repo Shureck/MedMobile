@@ -38,19 +38,12 @@ public class LoginActivity extends AppCompatActivity {
 
         EditText login = findViewById(R.id.login);
         EditText pass = findViewById(R.id.pass);
-        Button reg = findViewById(R.id.button2);
         WorkWithToken workWithToken = new WorkWithToken(LoginActivity.this);
-        Button log = findViewById(R.id.button);
+        Button reg = findViewById(R.id.button);
         reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new IOAsyncTask().execute(new String[]{"http://localhost/register/patient", login.getText().toString(), pass.getText().toString()});
-            }
-        });
-        log.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new IOAsyncTask().execute(new String[]{"http://localhost/auth/patient", login.getText().toString(), pass.getText().toString()});
+                new IOAsyncTask().execute(new String[]{"http://10.18.0.3:8080/register/patient", login.getText().toString(), pass.getText().toString()});
             }
         });
 
@@ -77,11 +70,11 @@ public class LoginActivity extends AppCompatActivity {
                 previews = jsonObj.getString("token");
                 System.out.println("DDD "+previews);
                 workWithToken.saveToken(previews);
+                Intent intentTest = new Intent(LoginActivity.this, RootActivity.class);
+                startActivity(intentTest);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
         }
     }
 

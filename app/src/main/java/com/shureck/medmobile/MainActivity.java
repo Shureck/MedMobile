@@ -24,6 +24,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.google.gson.Gson;
+import com.shureck.medmobile.InputData.CheckInputActivity;
+import com.shureck.medmobile.Models.DataModel;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -153,7 +155,7 @@ public class MainActivity extends Activity {
                             e.printStackTrace();
                         }
 
-                        new IOAsyncTask().execute("http://10.50.3.240:8080/addPhoto");
+                        new IOAsyncTask().execute("http://10.18.0.3:8080/patient/getPhoto");
 
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -214,8 +216,13 @@ public class MainActivity extends Activity {
         protected void onPostExecute(String response) {
             strr = response;
             System.out.println("AAAA "+strr);
-//            Gson gson = new Gson();
-//            setData(previews);
+            Gson gson = new Gson();
+            DataModel dataModel = gson.fromJson(strr, DataModel.class);
+            Intent intentTest = new Intent(MainActivity.this, CheckInputActivity.class);
+            intentTest.putExtra("top", dataModel.getTop());
+            intentTest.putExtra("bottom", dataModel.getBottom());
+            intentTest.putExtra("pulse", dataModel.getPulse());
+            startActivity(intentTest);
         }
     }
 
@@ -229,8 +236,9 @@ public class MainActivity extends Activity {
 
             final MediaType MEDIA_TYPE_PNG = MediaType.parse("image/png");
 
-            RequestBody req = new MultipartBody.Builder().setType(MultipartBody.FORM).addFormDataPart("file","profile.png", RequestBody.create(MEDIA_TYPE_PNG, f))
-                    .addFormDataPart("title", "Kek_Lol").build();
+            RequestBody req = new MultipartBody.Builder().setType(MultipartBody.FORM)
+                    .addFormDataPart("image","profile.png", RequestBody.create(MEDIA_TYPE_PNG, f))
+                    .build();
 
 //            RequestBody formBody = new FormBody.Builder()
 //                    .add("LatLong", str)
@@ -238,7 +246,7 @@ public class MainActivity extends Activity {
 
             Request request = new Request.Builder()
                     .url(str)
-                    //.header("Authorization","Bearer ")
+                    .header("Authorization","Bearer "+token)
                     .post(req)
                     .build();
 

@@ -16,6 +16,7 @@ import android.os.IBinder;
 import android.text.format.Formatter;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ import androidx.core.app.NotificationManagerCompat;
 import com.google.gson.Gson;
 import com.koushikdutta.async.http.AsyncHttpClient;
 import com.koushikdutta.async.http.WebSocket;
+import com.shureck.medmobile.Models.DoctorMessage;
 
 import java.io.IOException;
 import java.net.URI;
@@ -56,12 +58,18 @@ public class SocketService extends Service {
     final Handler uiHandler = new Handler();
     Context context = this;
 
+    LinearLayout notify_container;
+    private String token;
+
     private final OkHttpClient client = new OkHttpClient();
     int notificationId = 0;
 
     public void onCreate() {
         super.onCreate();
         mWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+
+        WorkWithToken workWithToken = new WorkWithToken(SocketService.this);
+        token = workWithToken.readToken();
 
         myTimer.schedule(new TimerTask() { // Определяем задачу
             @Override
@@ -70,27 +78,28 @@ public class SocketService extends Service {
                     @Override
                     public void run() {
 
-                        System.out.println("!!!!!!!!!!!!!!!:::::");
+//                        System.out.println("!!!!!!!!!!!!!!!:::::");
 
-                        notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
-
-                        Intent intent = new Intent(getApplicationContext(), RootActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-                        NotificationCompat.Builder notificationBuilder =
-                                new NotificationCompat.Builder(getApplicationContext(), "CHANNEL_ID")
-                                        .setAutoCancel(false)
-                                        .setSmallIcon(R.drawable.ic_launcher_background)
-                                        .setWhen(System.currentTimeMillis())
-                                        .setContentIntent(pendingIntent)
-                                        .setContentTitle("Напоминание")
-                                        .setContentText("Измерить давление")
-                                        .setPriority(NotificationCompat.PRIORITY_HIGH);
-
-                        createChannelIfNeeded(notificationManager);
-                        notificationManager.notify(notificationId, notificationBuilder.build());
-                        notificationId++;
+//                        notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+//
+//                        Intent intent = new Intent(getApplicationContext(), RootActivity.class);
+//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+//                        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+//
+//                        NotificationCompat.Builder notificationBuilder =
+//                                new NotificationCompat.Builder(getApplicationContext(), "CHANNEL_ID")
+//                                        .setAutoCancel(false)
+//                                        .setSmallIcon(R.drawable.ic_launcher_background)
+//                                        .setWhen(System.currentTimeMillis())
+//                                        .setContentIntent(pendingIntent)
+//                                        .setContentTitle("Напоминание")
+//                                        .setContentText("Измерить давление")
+//                                        .setPriority(NotificationCompat.PRIORITY_HIGH);
+//
+//                        createChannelIfNeeded(notificationManager);
+//                        notificationManager.notify(notificationId, notificationBuilder.build());
+//                        notificationId++;
+                        new IOAsyncTask().execute("http://10.18.0.3:8080/patient/actualDoctorMessage");
                     }
                 });
             }
@@ -140,7 +149,38 @@ public class SocketService extends Service {
             strr = response;
             System.out.println("AAAA "+strr);
             Gson gson = new Gson();
-            //setData(previews);
+            try {
+                List<DoctorMessage> previews = stringToArray(strr, DoctorMessage[].class);
+                System.out.println("DDD "+previews.get(0).getDoctorName());
+
+                for(int i=0;i<previews.size();i++){
+
+                    notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+
+                    Intent intent = new Intent(getApplicationContext(), RootActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                    NotificationCompat.Builder notificationBuilder =
+                            new NotificationCompat.Builder(getApplicationContext(), "CHANNEL_ID")
+                                    .setAutoCancel(false)
+                                    .setSmallIcon(R.drawable.ic_launcher_background)
+                                    .setWhen(System.currentTimeMillis())
+                                    .setContentIntent(pendingIntent)
+                                    .setContentTitle(previews.get(i).getDoctorName())
+                                    .setContentText(previews.get(i).getText())
+                                    .setPriority(NotificationCompat.PRIORITY_HIGH);
+
+                    createChannelIfNeeded(notificationManager);
+                    notificationManager.notify(notificationId, notificationBuilder.build());
+                    notificationId++;
+                }
+
+            }catch (Exception e){
+
+            }
+
+
         }
     }
 
@@ -156,7 +196,7 @@ public class SocketService extends Service {
 
             Request request = new Request.Builder()
                     .url(str)
-                    //.header("Authorization","Bearer ")
+                    .header("Authorization","Bearer "+token)
                     .get()
                     .build();
 
