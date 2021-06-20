@@ -47,7 +47,6 @@ public class MainActivity extends Activity {
 
     File f;
     String strr;
-    ImageView ivPhoto;
     private Uri imageUri;
     private String token;
 
@@ -58,7 +57,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         createDirectory();
-        ivPhoto = (ImageView) findViewById(R.id.image_preview);
 
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
@@ -127,7 +125,6 @@ public class MainActivity extends Activity {
                         bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
                         Log.d(TAG, "bitmap " + bitmap.getWidth() + " x "
                                 + bitmap.getHeight());
-                        ivPhoto.setImageBitmap(bitmap);
 
                         /////////
 
@@ -155,7 +152,13 @@ public class MainActivity extends Activity {
                             e.printStackTrace();
                         }
 
-                        new IOAsyncTask().execute("http://10.18.0.3:8080/patient/getPhoto");
+//                        new IOAsyncTask().execute("http://10.50.3.240:8080/patient/getPhoto");
+
+                        Intent intentTest = new Intent(MainActivity.this, CheckInputActivity.class);
+                        intentTest.putExtra("top", 136);
+                        intentTest.putExtra("bottom", 89);
+                        intentTest.putExtra("pulse", 85);
+                        startActivity(intentTest);
 
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -217,11 +220,11 @@ public class MainActivity extends Activity {
             strr = response;
             System.out.println("AAAA "+strr);
             Gson gson = new Gson();
-            DataModel dataModel = gson.fromJson(strr, DataModel.class);
+            String dataModel = response;
             Intent intentTest = new Intent(MainActivity.this, CheckInputActivity.class);
-            intentTest.putExtra("top", dataModel.getTop());
-            intentTest.putExtra("bottom", dataModel.getBottom());
-            intentTest.putExtra("pulse", dataModel.getPulse());
+            intentTest.putExtra("top", 136);
+            intentTest.putExtra("bottom", 89);
+            intentTest.putExtra("pulse", 85);
             startActivity(intentTest);
         }
     }

@@ -36,7 +36,7 @@ public class DoctorsNotifyActivity extends AppCompatActivity {
         WorkWithToken workWithToken = new WorkWithToken(DoctorsNotifyActivity.this);
         token = workWithToken.readToken();
 
-        new IOAsyncTask().execute("http://10.18.0.3:8080/patient/allDoctorMessage");
+        new IOAsyncTask().execute("http://10.50.3.240:8080/patient/allDoctorMessage");
     }
 
 

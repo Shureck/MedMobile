@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new IOAsyncTask().execute(new String[]{"http://10.18.0.3:8080/register/patient", login.getText().toString(), pass.getText().toString()});
+                new IOAsyncTask().execute(new String[]{"http://10.50.3.240:8080/register/patient", login.getText().toString(), pass.getText().toString()});
             }
         });
 

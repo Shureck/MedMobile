@@ -48,30 +48,17 @@ public class CheckInputActivity extends AppCompatActivity {
         EditText low_pres_val = findViewById(R.id.low_pres_val);
         EditText pulse_val = findViewById(R.id.pulse_val);
 
-        try {
-            Intent forseIntent = getIntent();
-            String top = forseIntent.getStringExtra("top");
-            String bottom = forseIntent.getStringExtra("bottom");
-            String pulse = forseIntent.getStringExtra("pulse");
-
-
-            if (top != null){
-                top_pres_val.setText(top);
-            }
-            if (bottom != null){
-                low_pres_val.setText(bottom);
-            }
-            if (pulse != null){
-                pulse_val.setText(pulse);
-            }
-
-        }catch (Exception e){
-
-        }
+        Intent forseIntent = getIntent();
+        int top = forseIntent.getIntExtra("top",0);
+        int bottom = forseIntent.getIntExtra("bottom",0);
+        int pulse = forseIntent.getIntExtra("pulse",0);
+        top_pres_val.setText(String.valueOf(top));
+        low_pres_val.setText(String.valueOf(bottom));
+        pulse_val.setText(String.valueOf(pulse));
 
         sendButton.setOnClickListener(v -> {
 
-            new IOAsyncTask().execute("http://10.18.0.3:8080/patient/addPressure?top=" + top_pres_val.getText() +
+            new IOAsyncTask().execute("http://10.50.3.240:8080/patient/addPressure?top=" + top_pres_val.getText() +
                     "&bottom="+low_pres_val.getText()+"&pulse="+pulse_val.getText());
 
             Intent intent = new Intent(CheckInputActivity.this, SelectNewActionTypeActivity.class);
